@@ -11,14 +11,21 @@ function isTouching(a, b) {
 
 let currentLeft = 100;
 let currentTop = 100;
-let i = 0;
 let score = 0;
+let direction = true;
 const step = 20;
 
 const mario = document.querySelector('#avatar');
 const coin = document.querySelector('#coin');
 const scoreboard = document.querySelector('#scoreboard');
-console.dir(scoreboard);
+
+function flipMario(direction) {
+  if (!direction) {
+    mario.style.transform = 'scale(-1, 1)';
+  } else {
+    mario.style.transform = 'scale(1, 1)';
+  }
+}
 
 window.addEventListener('keydown', e => {
   e.preventDefault();
@@ -30,22 +37,23 @@ window.addEventListener('keydown', e => {
         ? (currentLeft += step)
         : currentLeft;
       mario.style.left = `${currentLeft}px`;
-      console.log(currentLeft);
+      direction = true;
+      flipMario(direction);
       break;
     case 'ArrowLeft':
       currentLeft > 0 ? (currentLeft -= step) : currentLeft;
       mario.style.left = `${currentLeft}px`;
-      console.log(currentLeft);
+      mario.style.transform = 'scale(-1, 1)';
+      direction = false;
+      flipMario(direction);
       break;
     case 'ArrowUp':
       currentTop > 0 ? (currentTop -= step) : currentTop;
       mario.style.top = `${currentTop}px`;
-      console.log(currentTop);
       break;
     case 'ArrowDown':
       currentTop < window.innerHeight - 100 ? (currentTop += step) : currentTop;
       mario.style.top = `${currentTop}px`;
-      console.log(currentTop);
       break;
 
     default:

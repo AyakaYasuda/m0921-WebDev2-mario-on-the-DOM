@@ -78,7 +78,7 @@ window.addEventListener('keydown', e => {
     mario.style.width = `${marioWidth}px`;
     mario.style.height = 'auto';
 
-    // const sound = new Audio('../audio/smw_coin.wav');
-    // sound.play();
+    const sound = new Audio('/smw_coin.wav');
+    sound.play();
   }
 });

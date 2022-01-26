@@ -13,6 +13,7 @@ let currentLeft = 100;
 let currentTop = 100;
 let score = 0;
 let direction = true;
+let marioWidth = 100;
 const step = 20;
 
 const mario = document.querySelector('#avatar');
@@ -71,6 +72,11 @@ window.addEventListener('keydown', e => {
 
     score += 10;
     scoreboard.textContent = `Your Score : ${score}`;
+
+    marioWidth += 30;
+    console.log(marioWidth);
+    mario.style.width = `${marioWidth}px`;
+    mario.style.height = 'auto';
 
     // const sound = new Audio('../audio/smw_coin.wav');
     // sound.play();

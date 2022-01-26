@@ -18,6 +18,7 @@ const step = 20;
 const mario = document.querySelector('#avatar');
 const coin = document.querySelector('#coin');
 const scoreboard = document.querySelector('#scoreboard');
+console.dir(mario);
 
 function flipMario(direction) {
   if (!direction) {
@@ -60,7 +61,7 @@ window.addEventListener('keydown', e => {
       console.log("can't move...");
   }
 
-  // Get coin move randomly in the screen
+  // Get coin moving randomly in the screen
   if (isTouching(mario, coin)) {
     const height = Math.floor(Math.random() * (window.innerHeight - 100));
     const width = Math.floor(Math.random() * (window.innerWidth - 100));
@@ -69,7 +70,9 @@ window.addEventListener('keydown', e => {
     coin.style.left = `${width}px`;
 
     score += 10;
-
     scoreboard.textContent = `Your Score : ${score}`;
+
+    // const sound = new Audio('../audio/smw_coin.wav');
+    // sound.play();
   }
 });
